@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/dokku/dokku/plugins/apps"
 	"github.com/dokku/dokku/plugins/common"
 	dockeroptions "github.com/dokku/dokku/plugins/docker-options"
 	"github.com/ryanuber/columnize"
@@ -218,7 +219,7 @@ func removeProcfile(appName string) error {
 }
 
 func restorePrep() error {
-	apps, err := common.DokkuApps()
+	apps, err := apps.DokkuApps()
 	if err != nil {
 		common.LogWarn(err.Error())
 		return nil
